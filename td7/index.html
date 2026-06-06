@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>index td8 : fetch</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<main id="photo">
+
+<section id="la_photo"></section>
+</main>
+
+<script id="photoTemplate" type="text/x-handlebars-template">
+	<h1>Photo : {{id}} </h1>
+    <img src="{{urlComplete}}" alt="{{titre}}">
+    <h4>{{titre}}</h4>
+    <p>{{descr}}</p>
+    <p>{{type}}, {{width}}x{{height}}</p>
+    <h4 id="la_categorie">categorie : </h4>
+    <h4>commentaires :</h4>
+    <ul id="les_commentaires"></ul>
+  
+</script>
+
+<script id="commentsTemplate" type="text/x-handlebars-template">
+    {{#each this}}
+        <li>{{pseudo}} : {{content}}</li>
+    {{/each}}
+</script>
+
+<script id="categorieTemplate" type="text/x-handlebars-template">
+    categorie : {{nom}}
+</script>
+
+<!-- Boutons de navigation -->
+<nav>
+    <button id="btn_prev">prev</button>
+    <button id="btn_load">load</button>
+    <button id="btn_next">next</button>
+    <button id="btn_first">first</button>
+    <button id="btn_last">last</button>
+</nav>
+
+<section id="la_galerie"></section>
+
+
+
+<!-- Template Handlebars pour afficher les vignettes -->
+<script id="galerieTemplate" type="text/x-handlebars-template">
+    {{#each this}}
+        <!-- Une vignette par photo, avec l'id stocké dans data-photoId -->
+        <div class="vignette" data-photoId="{{photo.id}}">
+            <img src="{{thumbnailUrl}}" alt="{{photo.titre}}">
+        </div>
+    {{/each}}
+</script>
+
+
+<script  src='dist/bundle.js' defer ></script>
+</body>
+</html>
